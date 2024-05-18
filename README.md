@@ -1,9 +1,18 @@
-# create-my-template
+# Critique of the Gotha Program
 
-Example project to showcase how to build your own `create-my-template` npx starter template.
-
+Run:
 ```bash
-$ npx create-my-template my-app
+$ npx create-a-critique
 ```
+To create a new project using this little framework
 
-[Read my article on how this works](https://petermekhaeil.com/how-to-build-an-npx-starter-template/).
+This project is made using:
+
+- Go (with or without Echo)
+- Templ
+- HTMX
+- Alpine.js
+
+So it's made using GoTHA (Go, Templ, HTMX, Alpine.js).
+
+The template was made using the Vite template CSS, so credits to them!
