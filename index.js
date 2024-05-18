@@ -50,6 +50,11 @@ inquirer
       message: "Which package manager you wish to use?",
       choices: ["NPM", "Yarn (Unavailable for now)", "PNPM"],
       default: "PNPM"
+    },
+    {
+      type: "confirm",
+      name: "goInstalled",
+      message: "Do you wish to be prompted to install the necessary tools? (Only works if golang is installed)",
     }
   ])
   .then((anwsers) => main(anwsers))
@@ -64,6 +69,33 @@ inquirer
   })
 
 async function main(anwsers) {
+
+  if (anwsers.goInstalled) {
+    await inquirer
+      .prompt([
+        {
+          type: "confirm",
+          name: "installAir",
+          message: "Do you wanna install Air now?"
+        },
+        {
+          type: "confirm",
+          name: "installTempl",
+          message: "Do you wish to install Templ now?"
+        }
+      ])
+      .then((anwsers) => {
+        if (anwsers.installAir) {
+          spawn.sync('go', ['install', `github.com/cosmtrek/air@latest`], { stdio: 'inherit' });
+        }
+        if (anwsers.installTempl) {
+          spawn.sync('go', ['install', `github.com/a-h/templ/cmd/templ@latest`], { stdio: 'inherit' });
+        }
+      })
+  } else {
+    console.log("Please, install Golang before using this script!");
+    process.exit(1);
+  }
 
   // console.log(anwsers)
 
