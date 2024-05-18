@@ -16,3 +16,10 @@ This project is made using:
 So it's made using GoTHA (Go, Templ, HTMX, Alpine.js).
 
 The template was made using the Vite template CSS, so credits to them!
+
+Needs installed:
+
+- A JS Package Manager (NPM, PNPM)
+- Go
+- Templ
+- Air (for Go)
