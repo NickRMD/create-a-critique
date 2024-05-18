@@ -1,0 +1,11 @@
+package pages;
+
+import (
+	"backend/components"
+)
+
+templ Index(counter int) {
+	<button hx-get="/count" hx-swap="innerHTML">
+		@components.Count(counter)
+	</button>
+}

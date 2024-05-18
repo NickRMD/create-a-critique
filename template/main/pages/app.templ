@@ -1,0 +1,22 @@
+package pages
+
+templ Head(title string, description string) {
+	<head>
+		<title>{ title }</title>
+		<meta name="description" content={ description }/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<script type="module" src="/public/bundle.js"></script>
+		<meta charset="UTF-8"/>
+		<link rel="shortcut icon" href="/public/favicon.ico"/>
+	</head>
+}
+
+templ App(page templ.Component, lang string, title string, description string) {
+	<!DOCTYPE html>
+	<html lang={ lang }>
+		@Head(title, description)
+		<body>
+			@page
+		</body>
+	</html>
+}

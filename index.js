@@ -11,6 +11,7 @@ import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import Module from "node:module";
 import chalk from "chalk";
+import sudo from "sudo-prompt"
 
 const require = Module.createRequire(import.meta.url);
 
@@ -78,6 +79,32 @@ async function main(anwsers) {
   // and the files we want to create.
   const templateDir = path.resolve(__dirname, 'template');
   fs.cpSync(templateDir, projectDir, { recursive: true });
+
+  if (anwsers.useTS) {
+    fs.rmSync(`${projectDir}/srcJS`, { recursive: true });
+    fs.rmSync(`${projectDir}/webpack.js.config.cjs`)
+    fs.renameSync(`${projectDir}/srcTS`, `${projectDir}/src`);
+    fs.renameSync(`${projectDir}/webpack.ts.config.cjs`, `${projectDir}/webpack.config.cjs`)
+
+    let indexTSFile = fs.readFileSync(`${projectDir}/src/index.ts`).toString();
+
+    let times = 3;
+
+    while (times > 0) {
+      indexTSFile = indexTSFile.replace("// Ignored because the template can't have dependencies installed\n", "");
+      indexTSFile = indexTSFile.replace("// @ts-ignore\n", "");
+      times--;
+    }
+
+    fs.writeFileSync(path.join(`${projectDir}/src`, "index.ts"), indexTSFile)
+
+  } else {
+    fs.rmSync(`${projectDir}/srcTS`, { recursive: true });
+    fs.rmSync(`${projectDir}/webpack.ts.config.cjs`)
+    fs.rmSync(`${projectDir}/tsconfig.json`)
+    fs.renameSync(`${projectDir}/srcJS`, `${projectDir}/src`);
+    fs.renameSync(`${projectDir}/webpack.js.config.cjs`, `${projectDir}/webpack.config.cjs`)
+  }
 
   // It is good practice to have dotfiles stored in the
   // template without the dot (so they do not get picked

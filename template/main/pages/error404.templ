@@ -1,0 +1,17 @@
+package pages
+
+templ Error404() {
+	<div
+		x-data="{ count: 5 }"
+		x-init="
+        let timer = setInterval(() => {
+        if (count > 0) { count -= 1; }
+        else {
+            clearInterval(timer); window.location.href = '/'; }
+        },1000)"
+	>
+		<h1>Error 404</h1>
+		<h2>Redirecting in <span x-text="count">5</span> seconds.</h2>
+		<a class="text-blue-600 hover:text-blue-800" href="/"><h3>Go back</h3></a>
+	</div>
+}
