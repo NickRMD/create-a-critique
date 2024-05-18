@@ -1,6 +1,6 @@
 {
   "name": "create-a-critique",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Start a GoTHA app, it combines Go, Templ, HTMX and Alpine.js in the same bundle.",
   "type": "module",
   "bin": {

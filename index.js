@@ -88,9 +88,6 @@ async function main(anwsers) {
           spawn.sync('go', ['install', `github.com/a-h/templ/cmd/templ@latest`], { stdio: 'inherit' });
         }
       })
-  } else {
-    console.log("Please, install Golang before using this script!");
-    process.exit(1);
   }
 
   // console.log(anwsers)
