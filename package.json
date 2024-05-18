@@ -1,0 +1,36 @@
+{
+  "name": "create-a-critique",
+  "version": "1.0.0",
+  "description": "Start a GoTHA app, it combines Golang (with Echo), Templ, HTMX and Alpine.js in the same bundle.",
+  "type": "module",
+  "bin": {
+    "create-a-critique": "./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NickRMD/create-a-critique.git"
+  },
+  "keywords": [
+    "gotha",
+    "Golang",
+    "GoTHA",
+    "Echo",
+    "Templ",
+    "HTMX",
+    "Alpine",
+    "Alpine.js",
+    "Typescript",
+    "critique"
+  ],
+  "author": "Camarada Ulyanov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NickRMD/create-a-critique/issues"
+  },
+  "homepage": "https://github.com/NickRMD/create-a-critique#readme",
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "cross-spawn": "^7.0.3",
+    "inquirer": "^9.2.22"
+  }
+}
