@@ -23,3 +23,12 @@ Needs installed:
 - Go
 - Templ
 - Air (for Go)
+
+HTMX is used in the Index page and Alpine.js is used a bit in the 404 page for redirecting after 5 seconds.
+
+## Docs here:
+- [Go](https://go.dev/doc/)
+- [Echo](https://echo.labstack.com/docs)
+- [Templ](https://templ.guide/)
+- [HTMX](https://htmx.org/docs/)
+- [Alpine.js](https://alpinejs.dev/start-here)
