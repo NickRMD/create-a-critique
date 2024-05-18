@@ -16,7 +16,9 @@ templ App(page templ.Component, lang string, title string, description string) {
 	<html lang={ lang }>
 		@Head(title, description)
 		<body>
-			@page
+			<div id="app">
+				@page
+			</div>
 		</body>
 	</html>
 }

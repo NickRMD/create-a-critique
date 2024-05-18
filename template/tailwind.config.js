@@ -7,7 +7,7 @@ const config = {
     },
     plugins: [],
     corePlugins: {
-        preflight: true,
+        preflight: false,
     }
 }
 

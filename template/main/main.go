@@ -38,7 +38,7 @@ func main() {
 		return c.HTML(http.StatusOK, buf.String())
 	})
 
-	e.GET("/count", func(c echo.Context) error {
+	e.POST("/count", func(c echo.Context) error {
 		buf := new(bytes.Buffer)
 		counter++
 		component := components.Count(counter)
@@ -46,30 +46,6 @@ func main() {
 		c.Set("content-type", "text/html")
 		return c.HTML(http.StatusOK, buf.String())
 	})
-
-	// e.GET("/hello", func(c echo.Context) error {
-	// 	buf := new(bytes.Buffer)
-	// 	component := components.Hello("bro!")
-	// 	component.Render(context.Background(), buf)
-	// 	c.Set("content-type", "text/html")
-	// 	return c.HTML(http.StatusOK, buf.String())
-	// })
-
-	// e.GET("/test/:test", func(c echo.Context) error {
-	// 	buf := new(bytes.Buffer)
-	// 	component := components.Test(c.Param("test"))
-	// 	component.Render(context.Background(), buf)
-	// 	c.Set("content-type", "text/html")
-	// 	return c.HTML(http.StatusOK, buf.String())
-	// })
-
-	// e.GET("/test/", func(c echo.Context) error {
-	// 	buf := new(bytes.Buffer)
-	// 	component := components.Test("")
-	// 	component.Render(context.Background(), buf)
-	// 	c.Set("content-type", "text/html")
-	// 	return c.HTML(http.StatusOK, buf.String())
-	// })
 
 	e.GET("/robots.txt", func(c echo.Context) error {
 		return c.String(http.StatusNotFound, "")
