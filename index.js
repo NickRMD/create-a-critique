@@ -1,8 +1,5 @@
 #!/usr/bin/env node
 
-// const spawn = require('cross-spawn');
-// const fs = require('fs');
-// const path = require('path');
 import fs from "fs"
 import spawn from "cross-spawn"
 import path from "path"
@@ -11,7 +8,6 @@ import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import Module from "node:module";
 import chalk from "chalk";
-import sudo from "sudo-prompt"
 
 const require = Module.createRequire(import.meta.url);
 
@@ -190,8 +186,6 @@ async function main(anwsers) {
   // Update the project's package.json with the new project name
   projectPackageJson.name = projectName;
 
-  // console.log(projectPackageJson)
-
   fs.writeFileSync(
     path.join(projectDir, 'package.json'),
     JSON.stringify(projectPackageJson, null, 2)
@@ -227,7 +221,7 @@ async function main(anwsers) {
 
     })
 
-  console.log(chalk.bgGreen(chalk.black('Your new project is ready. Run the build command and then use air to start the program.')));
+  console.log(chalk.bgGreen(chalk.black('Your new project is ready. Run the "npm/pnpm run dev" command to start the program.')));
   console.log(`Created ${chalk.cyanBright(projectName)} at ${chalk.bgWhite(chalk.black(projectDir))}`);
 
 }
