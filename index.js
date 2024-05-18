@@ -37,7 +37,7 @@ inquirer
     {
       type: "confirm",
       name: "echo",
-      message: `Use ${chalk.blue("Echo")} for backend?`,
+      message: `Use ${chalk.blue("Echo")} for backend? (Still not working, will use Echo for either)`,
     },
     {
       type: "confirm",
@@ -48,7 +48,7 @@ inquirer
       type: "list",
       name: "packageManager",
       message: "Which package manager you wish to use?",
-      choices: ["NPM", "Yarn", "PNPM"],
+      choices: ["NPM", "Yarn (Unavailable for now)", "PNPM"],
       default: "PNPM"
     }
   ])
@@ -66,6 +66,11 @@ inquirer
 async function main(anwsers) {
 
   // console.log(anwsers)
+
+  if (anwsers.packageManager === "Yarn (Unavailable for now)") {
+    console.log("Yarn is unavailable for now, please choose another.")
+    process.exit(1)
+  }
 
   const projectName = anwsers.projectName;
 
@@ -153,7 +158,7 @@ async function main(anwsers) {
   // Update the project's package.json with the new project name
   projectPackageJson.name = projectName;
 
-  console.log(projectPackageJson)
+  // console.log(projectPackageJson)
 
   fs.writeFileSync(
     path.join(projectDir, 'package.json'),
@@ -190,7 +195,7 @@ async function main(anwsers) {
 
     })
 
-  console.log(chalk.bgGreen(chalk.black('Success! Your new project is ready.')));
+  console.log(chalk.bgGreen(chalk.black('Your new project is ready. Run the build command and then use air to start the program.')));
   console.log(`Created ${chalk.cyanBright(projectName)} at ${chalk.bgWhite(chalk.black(projectDir))}`);
 
 }

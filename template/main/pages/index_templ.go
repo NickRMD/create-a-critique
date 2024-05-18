@@ -27,7 +27,7 @@ func Index(counter int) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<button hx-get=\"/count\" hx-swap=\"innerHTML\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<h2>Technologies Used:</h2><div><a href=\"https://go.dev/\" target=\"_blank\"><img src=\"/public/golang.svg\" class=\"size-40 logo go\" alt=\"Go logo\"></a> <a href=\"https://templ.guide/\" target=\"_blank\"><img src=\"/public/templ.svg\" style=\"height: 10rem; width: 10rem;\" class=\"logo templ\" alt=\"Templ logo\"></a> <a href=\"https://htmx.org/\" target=\"_blank\"><img src=\"/public/htmx.svg\" class=\"size-40 logo htmx\" alt=\"HTMX logo\"></a> <a href=\"https://alpinejs.dev/\" target=\"_blank\"><img src=\"/public/alpinejs.svg\" class=\"size-40 logo alpine\" alt=\"Alpine.js logo\"></a><h1>Critique of the <span class=\"text-cyan-300\">Gotha</span> Program</h1><div class=\"card\"><button id=\"button\" hx-post=\"/count\" type=\"button\" hx-swap=\"innerHTML\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -35,7 +35,7 @@ func Index(counter int) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</button>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</button></div><p class=\"read-the-docs\">Click on the button and update the page to see the magic!</p></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
