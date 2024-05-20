@@ -1,5 +1,7 @@
 package pages
 
+// Error404 provides an Alpine.js-powered error page that automatically redirects users to the home page after a 5-second countdown.
+// The countdown is displayed to the user, and a manual redirect option is also provided.
 templ Error404() {
 	<div
 		x-data="{ count: 5 }"

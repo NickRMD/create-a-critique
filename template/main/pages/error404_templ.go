@@ -10,6 +10,8 @@ import "context"
 import "io"
 import "bytes"
 
+// Error404 provides an Alpine.js-powered error page that automatically redirects users to the home page after a 5-second countdown.
+// The countdown is displayed to the user, and a manual redirect option is also provided.
 func Error404() templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)

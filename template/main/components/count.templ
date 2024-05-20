@@ -4,6 +4,9 @@ import (
 	"fmt"
 )
 
+// Count renders the current value of the counter variable.
+// It uses the fmt package to convert the integer counter to a string representation.
 templ Count(counter int) {
+	// The counter value is converted to a string and rendered.
 	{ fmt.Sprint(counter) }
 }

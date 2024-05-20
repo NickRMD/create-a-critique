@@ -1,5 +1,9 @@
 package pages
 
+// Head defines a template function for the HTML <head> section.
+// It sets the page title, description, viewport settings for responsive design,
+// includes the main JavaScript module, sets the character encoding to UTF-8,
+// and links the favicon image.
 templ Head(title string, description string) {
 	<head>
 		<title>{ title }</title>
@@ -11,6 +15,9 @@ templ Head(title string, description string) {
 	</head>
 }
 
+// App is the main template that structures the HTML document.
+// It defines the document type, the language of the document, includes the Head component,
+// and defines the body of the document with a div container where the page content will be injected.
 templ App(page templ.Component, lang string, title string, description string) {
 	<!DOCTYPE html>
 	<html lang={ lang }>
