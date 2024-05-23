@@ -19,6 +19,50 @@ if (projectName) {
   defaultName = projectName;
 }
 
+const devDependenciesForJS = {
+  "autoprefixer": "^10.4.19",
+  "concurrently": "8.2.2",
+  "css-loader": "^7.1.1",
+  "cssnano": "^7.0.1",
+  "postcss": "^8.4.38",
+  "postcss-cli": "^11.0.0",
+  "postcss-import": "^16.1.0",
+  "postcss-loader": "^8.1.1",
+  "postcss-nested": "^6.0.1",
+  "postcss-preset-env": "^9.5.13",
+  "postcss-scss": "^4.0.9",
+  "sass": "^1.77.1",
+  "sass-loader": "^14.2.1",
+  "style-loader": "^4.0.0",
+  "tailwindcss": "^3.4.3",
+  "webpack": "^5.91.0",
+  "webpack-cli": "^5.1.4"
+}
+
+const devDependenciesForTS = {
+  "@types/alpinejs": "^3.13.10",
+  "@types/alpinejs__morph": "^3.13.4",
+  "autoprefixer": "^10.4.19",
+  "concurrently": "8.2.2",
+  "css-loader": "^7.1.1",
+  "cssnano": "^7.0.1",
+  "postcss": "^8.4.38",
+  "postcss-cli": "^11.0.0",
+  "postcss-import": "^16.1.0",
+  "postcss-loader": "^8.1.1",
+  "postcss-nested": "^6.0.1",
+  "postcss-preset-env": "^9.5.13",
+  "postcss-scss": "^4.0.9",
+  "sass": "^1.77.1",
+  "sass-loader": "^14.2.1",
+  "style-loader": "^4.0.0",
+  "tailwindcss": "^3.4.3",
+  "ts-loader": "^9.5.1",
+  "typescript": "^5.4.5",
+  "webpack": "^5.91.0",
+  "webpack-cli": "^5.1.4"
+}
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -180,8 +224,17 @@ async function main(anwsers) {
       break;
   }
 
+  let devDependencies = {};
+
+  if (anwsers.useTS) {
+    devDependencies = devDependenciesForTS;
+  } else {
+    devDependencies = devDependenciesForJS;
+  }
+
   // Update the project's package.json with the new project name
   projectPackageJson.name = projectName;
+  projectPackageJson.devDependencies = devDependencies;
 
   fs.writeFileSync(
     path.join(projectDir, 'package.json'),

@@ -14,7 +14,7 @@ import "bytes"
 // It sets the page title, description, viewport settings for responsive design,
 // includes the main JavaScript module, sets the character encoding to UTF-8,
 // and links the favicon image.
-func Head(title string, description string) templ.Component {
+func Head(title, description string) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
 		if !templ_7745c5c3_IsBuffer {
@@ -67,7 +67,7 @@ func Head(title string, description string) templ.Component {
 // App is the main template that structures the HTML document.
 // It defines the document type, the language of the document, includes the Head component,
 // and defines the body of the document with a div container where the page content will be injected.
-func App(page templ.Component, lang string, title string, description string) templ.Component {
+func App(page templ.Component, lang, title, description string) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
 		if !templ_7745c5c3_IsBuffer {

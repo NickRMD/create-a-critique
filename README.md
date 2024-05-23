@@ -26,6 +26,12 @@ Needs installed:
 
 HTMX is used in the Index page and Alpine.js is used a bit in the 404 page for redirecting after 5 seconds.
 
+## As of version 1.2.0 of the template:
+Now it's also using some middlewares for:
+CSRF token verification, zerolog for logging,
+Recovering from panics.
+Also added error handling in the renderers.
+
 ## Docs here:
 - [Go](https://go.dev/doc/)
 - [Echo](https://echo.labstack.com/docs)

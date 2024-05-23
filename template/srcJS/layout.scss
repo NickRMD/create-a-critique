@@ -1,10 +1,3 @@
-// $zero: 0;
-
-// body {
-//     margin: $zero;
-//     padding: $zero;
-// }
-
 :root {
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
@@ -43,6 +36,11 @@ h1 {
     line-height: 1.1;
 }
 
+h2 {
+    font-size: 2.2em;
+    line-height: 1.1;
+}
+
 #app {
     max-width: 1280px;
     margin: 0 auto;
@@ -61,8 +59,20 @@ h1 {
     filter: drop-shadow(0 0 2em #646cffaa);
 }
 
-.logo.vanilla:hover {
-    filter: drop-shadow(0 0 2em #3178c6aa);
+.logo.go:hover {
+    filter: drop-shadow(0 0 2em #0a6dd6aa);
+}
+
+.logo.templ:hover {
+    filter: drop-shadow(0 0 2em #ddb505aa);
+}
+
+.logo.htmx:hover {
+    filter: drop-shadow(0 0 2em #032286aa);
+}
+
+.logo.alpine:hover {
+    filter: drop-shadow(0 0 2em #034ab4aa);
 }
 
 .card {

@@ -8,10 +8,13 @@ import (
 )
 
 // Component Renderer
-func ComponentRender(s templ.Component) string {
+func ComponentRender(s templ.Component) (string, error) {
 
 	content := new(bytes.Buffer)
-	s.Render(context.Background(), content)
-	return content.String()
+	err := s.Render(context.Background(), content)
+	if err != nil {
+		return "", err
+	}
+	return content.String(), nil
 
 }
