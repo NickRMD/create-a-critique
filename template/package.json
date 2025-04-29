@@ -1,6 +1,5 @@
 {
   "name": "project-name",
-  "private": true,
   "version": "0.1.0",
   "scripts": {
     "build": "rspack build",
