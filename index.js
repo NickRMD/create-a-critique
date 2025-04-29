@@ -19,50 +19,6 @@ if (projectName) {
   defaultName = projectName;
 }
 
-const devDependenciesForJS = {
-  "autoprefixer": "^10.4.19",
-  "concurrently": "8.2.2",
-  "css-loader": "^7.1.1",
-  "cssnano": "^7.0.1",
-  "postcss": "^8.4.38",
-  "postcss-cli": "^11.0.0",
-  "postcss-import": "^16.1.0",
-  "postcss-loader": "^8.1.1",
-  "postcss-nested": "^6.0.1",
-  "postcss-preset-env": "^9.5.13",
-  "postcss-scss": "^4.0.9",
-  "sass": "^1.77.1",
-  "sass-loader": "^14.2.1",
-  "style-loader": "^4.0.0",
-  "tailwindcss": "^3.4.3",
-  "webpack": "^5.91.0",
-  "webpack-cli": "^5.1.4"
-}
-
-const devDependenciesForTS = {
-  "@types/alpinejs": "^3.13.10",
-  "@types/alpinejs__morph": "^3.13.4",
-  "autoprefixer": "^10.4.19",
-  "concurrently": "8.2.2",
-  "css-loader": "^7.1.1",
-  "cssnano": "^7.0.1",
-  "postcss": "^8.4.38",
-  "postcss-cli": "^11.0.0",
-  "postcss-import": "^16.1.0",
-  "postcss-loader": "^8.1.1",
-  "postcss-nested": "^6.0.1",
-  "postcss-preset-env": "^9.5.13",
-  "postcss-scss": "^4.0.9",
-  "sass": "^1.77.1",
-  "sass-loader": "^14.2.1",
-  "style-loader": "^4.0.0",
-  "tailwindcss": "^3.4.3",
-  "ts-loader": "^9.5.1",
-  "typescript": "^5.4.5",
-  "webpack": "^5.91.0",
-  "webpack-cli": "^5.1.4"
-}
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -78,11 +34,6 @@ inquirer
       type: "confirm",
       name: "echo",
       message: `Use ${chalk.blue("Echo")} for backend? (Still not working, will use Echo for either)`,
-    },
-    {
-      type: "confirm",
-      name: "useTS",
-      message: `Wish to use ${chalk.blue("TS")} instead of ${chalk.yellow("JS")}?`,
     },
     {
       type: "list",
@@ -126,7 +77,7 @@ async function main(anwsers) {
       ])
       .then((anwsers) => {
         if (anwsers.installAir) {
-          spawn.sync('go', ['install', `github.com/cosmtrek/air@latest`], { stdio: 'inherit' });
+          spawn.sync('go', ['install', `github.com/air-verse/air@latest`], { stdio: 'inherit' });
         }
         if (anwsers.installTempl) {
           spawn.sync('go', ['install', `github.com/a-h/templ/cmd/templ@latest`], { stdio: 'inherit' });
@@ -154,12 +105,6 @@ async function main(anwsers) {
   const templateDir = path.resolve(__dirname, 'template');
   fs.cpSync(templateDir, projectDir, { recursive: true });
 
-  if (anwsers.useTS) {
-    fs.rmSync(`${projectDir}/srcJS`, { recursive: true });
-    fs.rmSync(`${projectDir}/webpack.js.config.cjs`)
-    fs.renameSync(`${projectDir}/srcTS`, `${projectDir}/src`);
-    fs.renameSync(`${projectDir}/webpack.ts.config.cjs`, `${projectDir}/webpack.config.cjs`)
-
     let indexTSFile = fs.readFileSync(`${projectDir}/src/index.ts`).toString();
 
     let times = 3;
@@ -171,14 +116,6 @@ async function main(anwsers) {
     }
 
     fs.writeFileSync(path.join(`${projectDir}/src`, "index.ts"), indexTSFile)
-
-  } else {
-    fs.rmSync(`${projectDir}/srcTS`, { recursive: true });
-    fs.rmSync(`${projectDir}/webpack.ts.config.cjs`)
-    fs.rmSync(`${projectDir}/tsconfig.json`)
-    fs.renameSync(`${projectDir}/srcJS`, `${projectDir}/src`);
-    fs.renameSync(`${projectDir}/webpack.js.config.cjs`, `${projectDir}/webpack.config.cjs`)
-  }
 
   // It is good practice to have dotfiles stored in the
   // template without the dot (so they do not get picked
@@ -224,23 +161,6 @@ async function main(anwsers) {
       break;
   }
 
-  let devDependencies = {};
-
-  if (anwsers.useTS) {
-    devDependencies = devDependenciesForTS;
-  } else {
-    devDependencies = devDependenciesForJS;
-  }
-
-  // Update the project's package.json with the new project name
-  projectPackageJson.name = projectName;
-  projectPackageJson.devDependencies = devDependencies;
-
-  fs.writeFileSync(
-    path.join(projectDir, 'package.json'),
-    JSON.stringify(projectPackageJson, null, 2)
-  );
-
   await inquirer
     .prompt([
       {
@@ -265,6 +185,7 @@ async function main(anwsers) {
             break;
           case "PNPM":
             spawn.sync('pnpm', ['install', `--dir`, `./${anwsers.projectName}`], { stdio: 'inherit' });
+            spawn.sync('pnpm', ['approve-builds', '--dir', `./${anwsers.projectName}`], { stdio: 'inherit' })
             break;
         }
       }
