@@ -1,8 +1,6 @@
 package pages;
 
-import (
-	"backend/components"
-)
+import "backend/components"
 
 // Template that renders the main page of the application.
 // It showcases the technologies used in the project through a series of logos,
@@ -10,22 +8,24 @@ import (
 templ Index(counter int) {
 	<h2>Technologies Used:</h2> // Section title for the technologies used.
 	<div>
-		// Links to the official Go language website with the Go logo as a visual aid.
-		<a href="https://go.dev/" target="_blank">
-			<img src="/public/golang.svg" class="size-40 logo go" alt="Go logo"/>
-		</a>
-		// Links to the Templ templating language guide with the Templ logo.
-		<a href="https://templ.guide/" target="_blank">
-			<img src="/public/templ.svg" style="height: 10rem; width: 10rem;" class="logo templ" alt="Templ logo"/>
-		</a>
-		// Links to the HTMX website with the HTMX logo, indicating its use in the project.
-		<a href="https://htmx.org/" target="_blank">
-			<img src="/public/htmx.svg" class="size-40 logo htmx" alt="HTMX logo"/>
-		</a>
-		// Links to the Alpine.js framework documentation with the Alpine.js logo.
-		<a href="https://alpinejs.dev/" target="_blank">
-			<img src="/public/alpinejs.svg" class="size-40 logo alpine" alt="Alpine.js logo"/>
-		</a>
+		<div class="flex items-center justify-center flex-row">
+			// Links to the official Go language website with the Go logo as a visual aid.
+			<a href="https://go.dev/" target="_blank">
+				<img src="/public/golang.svg" class="size-40 logo go" alt="Go logo"/>
+			</a>
+			// Links to the Templ templating language guide with the Templ logo.
+			<a href="https://templ.guide/" target="_blank">
+				<img src="/public/templ.svg" style="height: 10rem; width: 10rem;" class="logo templ" alt="Templ logo"/>
+			</a>
+			// Links to the HTMX website with the HTMX logo, indicating its use in the project.
+			<a href="https://htmx.org/" target="_blank">
+				<img src="/public/htmx.svg" class="size-40 logo htmx" alt="HTMX logo"/>
+			</a>
+			// Links to the Alpine.js framework documentation with the Alpine.js logo.
+			<a href="https://alpinejs.dev/" target="_blank">
+				<img src="/public/alpinejs.svg" class="size-40 logo alpine" alt="Alpine.js logo"/>
+			</a>
+		</div>
 		<h1>Critique of the <span class="text-cyan-300">Gotha</span> Program</h1> // Title for the content section.
 		<div class="card">
 			// Interactive button that posts to '/count' and updates its content with the server response.
